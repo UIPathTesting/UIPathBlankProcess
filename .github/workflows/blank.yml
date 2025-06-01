@@ -27,7 +27,7 @@ jobs:
         run: |
           project_name=$(jq -r '.name' project.json)
           main_file=$(jq -r '.main' project.json)
-          project_Version = $(jq -r '.main' project.json)
+          project_Version = $(jq -r '.projectVersion' project.json)
           echo "Project Name: $project_name"
           echo "Project Version: $project_Version"
           echo "Main File: $main_file"
