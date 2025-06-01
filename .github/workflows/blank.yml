@@ -27,6 +27,7 @@ jobs:
 
       - name: Read project.json
         run: |
+          DeploymentVersion='1.0.2'
           project_name=$(jq -r '.name' project.json)
           project_version=$(jq -r '.projectVersion' project.json)
           main_file=$(jq -r '.main' project.json)
@@ -36,8 +37,8 @@ jobs:
           
       - name: Validate environment variable
         run: |
-          if [ $project_version !== '1.0.1' ] ; then
-            echo "Invalid DeploymentVersion value: "
+          if [ $project_version !== $DeploymentVersion ] ; then
+            echo "Deployment version is not matching with the version number in project.json file: "
             exit 1
           fi
            echo "Validation successful!" 
