@@ -36,7 +36,7 @@ jobs:
           
       - name: Validate environment variable
         run: |
-          if [ $project_version == '1.0.1' ] ; then
+          if [ $project_version !== '1.0.1' ] ; then
             echo "Invalid DeploymentVersion value: "
             exit 1
           fi
