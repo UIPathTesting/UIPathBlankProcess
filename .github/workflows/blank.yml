@@ -37,7 +37,7 @@ jobs:
           
       - name: Validate environment variable
         run: |
-          if [[ $projectversion !=  $DeploymentVersion]] ; then
+          if [[ ${{projectversion}} !=  ${{DeploymentVersion}} ]] ; then
             echo "Invalid DeploymentVersion value: $DeploymentVersion"
             exit 1
           fi
