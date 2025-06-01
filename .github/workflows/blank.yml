@@ -20,8 +20,8 @@ jobs:
       - name: Display User Inputs
         run: |
           DeploymentVersion ="1.0.1"
-          echo "DeploymentVersion: ${{ github.event.inputs.DeploymentVersion }}"
-          echo "Selected Environment: ${{ github.event.inputs.environment }}"
+          #echo "DeploymentVersion: ${{ github.event.inputs.DeploymentVersion }}"
+          #echo "Selected Environment: ${{ github.event.inputs.environment }}"
           
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -37,7 +37,7 @@ jobs:
           
       - name: Validate environment variable
         run: |
-          if [[ 1.0.1 !=  1.0.1 ]] ; then
+          if [[ $project_version !=  1.0.1 ]] ; then
             echo "Invalid DeploymentVersion value: $DeploymentVersion"
             exit 1
           fi
