@@ -27,7 +27,7 @@ jobs:
 
       - name: Read project.json
         run: |
-          DeploymentVersion='1.0.1'
+          DeploymentVersion='1.0.2'
           project_name=$(jq -r '.name' project.json)
           project_version=$(jq -r '.projectVersion' project.json)
           main_file=$(jq -r '.main' project.json)
