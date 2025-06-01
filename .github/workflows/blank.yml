@@ -30,7 +30,6 @@ jobs:
           DeploymentVersion='1.0.1'
           project_name=$(jq -r '.name' project.json)
           project_version=$(jq -r '.projectVersion' project.json)
-          project_version=project_version.trim()
           main_file=$(jq -r '.main' project.json)
           echo "Project Name: $project_name"
           echo "Project Version: $project_version"
@@ -38,7 +37,7 @@ jobs:
           
       - name: Validate environment variable
         run: |
-          if [ $project_version !== $DeploymentVersion ] ; then
+          if [ $project_version | xargs !== $DeploymentVersion | xargs ] ; then
             echo "Deployment version is not matching with the version number in project.json file."
             exit 1 
           fi
