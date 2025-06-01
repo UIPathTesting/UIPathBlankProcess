@@ -38,7 +38,8 @@ jobs:
       - name: Validate environment variable
         run: |
           if [ $project_version !== $DeploymentVersion ] ; then
-            echo "Deployment version is not matching with the version number in project.json file: "
-            exit 1
+            echo "Deployment version is not matching with the version number in project.json file."
+            fail:
+              msg:"Deployment version is not matching with the version number in project.json file." 
           fi
            echo "Validation successful!" 
