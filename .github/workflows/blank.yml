@@ -19,6 +19,7 @@ jobs:
     steps:
       - name: Display User Inputs
         run: |
+          DeploymentVersion ="1.0.1"
           echo "DeploymentVersion: ${{ github.event.inputs.DeploymentVersion }}"
           echo "Selected Environment: ${{ github.event.inputs.environment }}"
           
@@ -27,7 +28,6 @@ jobs:
 
       - name: Read project.json
         run: |
-          DeploymentVersion ="1.0.1"
           project_name=$(jq -r '.name' project.json)
           project_version=$(jq -r '.projectVersion' project.json)
           main_file=$(jq -r '.main' project.json)
