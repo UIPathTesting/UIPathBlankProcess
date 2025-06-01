@@ -3,7 +3,7 @@ name: Development workflow
 on: 
   workflow_dispatch:
     inputs:
-      projectversion:
+      DeploymentVersion:
         description: 'Enter the version Number to deploy'
         required: true
       environment:
@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: Display User Inputs
         run: |
-          echo "projectversion: ${{ github.event.inputs.projectversion }}"
+          echo "DeploymentVersion: ${{ github.event.inputs.DeploymentVersion }}"
           echo "Selected Environment: ${{ github.event.inputs.environment }}"
           
       - name: Checkout repository
@@ -26,8 +26,10 @@ jobs:
       - name: Read project.json
         run: |
           project_name=$(jq -r '.name' project.json)
+          projectversion=$(jq -r '.projectVersion' project.json)
           main_file=$(jq -r '.main' project.json)
           echo "Project Name: $project_name"
+          echo "Project Version: $projectversion"
           echo "Main File: $main_file"
           
       - name: Validate environment variable
