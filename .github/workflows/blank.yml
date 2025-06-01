@@ -17,6 +17,10 @@ jobs:
   read-json:
     runs-on: ubuntu-latest
     steps:
+      - name: Run only on main branch
+        if: github.ref == 'refs/heads/Dev'
+        run: echo "This runs only on the main branch"
+        
       - name: Display User Inputs
         run: |
           #echo "DeploymentVersion: ${{ github.event.inputs.DeploymentVersion }}"
